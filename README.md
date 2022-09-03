@@ -8,6 +8,7 @@
 `ShantenAgent`(シャンテン数を減らす方向に打つ、基本的なルールベースのエージェント)の行動を教師としてpolicyおよびvalueのDNNを教師あり学習する
 
 ```
+mkdir -p data
 # 教師データ作成
 python -m mjxrl.gen_play data/supervise_1_train.pkl.gz 10000
 python -m mjxrl.preprocess_sv data/supervise_1_train.pkl.gz data/supervise_1_train_pp.pkl.gz
