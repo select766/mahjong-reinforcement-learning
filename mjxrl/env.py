@@ -62,6 +62,9 @@ class GymEnv(gym.Env):
         options: Optional[dict] = None,
     ):
         assert return_info
+        # self.done_type == "round" の場合も、1局で完全リセットではなく次の局に進む仕様
+        # self.reward_type == "game_tenhou_7dan" の場合、最終局が終わった時しか報酬無し？
+        # self.reward_type == "round_win" の場合、1局ごとの勝者に1が与えられる。勝者がいない場合全員0。
         if self.mjx_env.done("game"):
             self.curr_obs_dict = self.mjx_env.reset()
 

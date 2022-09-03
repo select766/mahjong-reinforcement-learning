@@ -17,6 +17,8 @@ python -m mjxrl.preprocess_sv data/supervise_1_val.pkl.gz data/supervise_1_val_p
 # 学習
 python -m mjxrl.sv_train_policy data/sv_policy_1 data/supervise_1_train_pp.pkl.gz data/supervise_1_val_pp.pkl.gz
 python -m mjxrl.sv_train_value data/sv_policy_1 data/supervise_1_train_pp.pkl.gz data/supervise_1_val_pp.pkl.gz
+# 学習したモデルと、ランダムエージェント3人を対局させて勝率を見る
+python -m mjxrl.val_policy data/sv_policy_1/ 1000 RandomAgent
 ```
 
-学習したモデルを使った対局や可視化は未実装。
+RandomAgent相手で勝率0.145。誰も上がらない場合がよくあるので、ランダムでも0.25には達しない。全員ランダムだと勝率はほぼ0。
